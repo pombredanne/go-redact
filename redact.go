@@ -14,10 +14,10 @@ func URI(uri string) (string, error) {
 
 	// Redact password if present
 	if u.User != nil {
-		username := u.User.Username()
 		_, hasPW := u.User.Password()
 
 		if hasPW {
+			username := u.User.Username()
 			u.User = url.UserPassword(username, "REDACTED")
 		}
 	}
